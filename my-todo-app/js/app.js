@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
         editingIndex = null;
       } else {
         todos.push({ task: newTask, date: taskDate, time: taskTime });
-        // Render only the newly added item
         renderTodo({ task: newTask, date: taskDate, time: taskTime }, todos.length - 1);
       }
       saveTodos();
@@ -134,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderTodos();
 
-  // Request notification permission
   if (Notification.permission !== 'granted') {
     Notification.requestPermission().then(permission => {
       if (permission === 'granted') {
@@ -146,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Register service worker
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('js/sw.js').then(registration => {
     console.log('ServiceWorker registration successful with scope: ', registration.scope);
